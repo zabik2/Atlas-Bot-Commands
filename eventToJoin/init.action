@@ -1,0 +1,38 @@
+{
+  "comment": "Exported from https://atlas.bot",
+  "formatVersion": 2,
+  "exportedAt": "2023-01-27T12:25:44.032Z",
+  "actions": [
+    {
+      "id": "94485f22-9009-4bb1-8052-7a460289f392",
+      "flags": 0,
+      "name": "My Action",
+      "trigger": {
+        "type": 0,
+        "name": "init",
+        "channelId": null,
+        "description": "Initializes the event",
+        "parameters": []
+      },
+      "disabled": false,
+      "content": "Hello {user.mention}!\r\nYou have initialized the event!\r\n\r\n{=Empty_Array;{[]}}\r\n\r\n{store.set;globalUserArray;{$Empty_Array}}\r\n\r\n// This event consists out of 3 commands, init, join, and Event_stats\r\n// Due to atlas bot limitations, max user participant is 100\r\n// In case more are needed, code will explode in length and complexity\r\n// This code saves user's ID and current XP value\r\n// so that it can be compared at the end of the event, and we get most active participants",
+      "restriction": {
+        "permissions": "0",
+        "role": {
+          "mode": 1,
+          "value": [
+            "266694172654698496"
+          ]
+        },
+        "channel": {
+          "mode": 0,
+          "value": []
+        }
+      },
+      "cooldownSeconds": 0,
+      "createdAt": "2023-01-25T13:08:13.565Z",
+      "updatedAt": "2023-01-27T09:48:20.616Z",
+      "task": null
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "comment": "Exported from https://atlas.bot",
+  "formatVersion": 2,
+  "exportedAt": "2023-01-27T12:25:47.142Z",
+  "actions": [
+    {
+      "id": "9b302ad8-8b3f-4152-a0d1-00818c7a0d6f",
+      "flags": 0,
+      "name": "My Action",
+      "trigger": {
+        "type": 0,
+        "name": "eventstats",
+        "channelId": null,
+        "description": "Prints out the participant list",
+        "parameters": []
+      },
+      "disabled": false,
+      "content": "Hello {user.mention}!\r\n{void;\r\n// void hides the following text, so that we do not have a bunch of empty lines\r\n{if;{$arraytosort};==;;{=arraytosort;{[]}}}\r\n// creates an array\r\n{=LocalUserArray;{store.get;globalUserArray}}\r\n// gets all users into the array\r\n\r\n[#for;{=item};{$LocalUserArray}]\r\n\r\n{push ;{$arraytosort};{{\"user\": \"{user.id;{$item.user}}\", \"xp\": \"{math;{user.xp;{$item.user}} - {$item.xp}}\"}}}\r\n    \r\n[/for]\r\n// subtracts xp value when user joined from his current value\r\n\r\n{=arraysorted;{sort;{$arraytosort};xp}}\r\n// sorts the array based on xp gain. Atlas supports only descending order\r\n}\r\n[#for;{=item};{$arraysorted}]\r\n\r\n  {user.nickname;{$item.user}}\r\n  Gained this much xp: {$item.xp}\r\n  His Discord ID is: {$item.user}\r\n    \r\n[/for]\r\n\r\n",
+      "restriction": {
+        "permissions": "0",
+        "role": {
+          "mode": 1,
+          "value": [
+            "266694172654698496"
+          ]
+        },
+        "channel": {
+          "mode": 0,
+          "value": []
+        }
+      },
+      "cooldownSeconds": 0,
+      "createdAt": "2023-01-26T23:20:34.437Z",
+      "updatedAt": "2023-01-27T09:48:20.616Z",
+      "task": null
+    }
+  ]
+}
