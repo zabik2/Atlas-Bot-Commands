@@ -1,0 +1,13 @@
+{user.nickname;{option;user}} был заресечен
+
+{=LocalWork;{store.get;{option;user}}}
+{if;{$LocalPush};==;;{=LocalPush;{[]}}}
+{push;{$LocalPush};{{"rating": "0", "victories": "0","loses": "0"}}}
+{store.set;{option;user};{$LocalPush}}
+
+{if;{$LocalPushList};==;;{=LocalPushList;{[]}}}
+//{push;{$LocalPushList};{{"winner": ".", "race": ".","loser": ".", "loser_race": "."}}}
+{store.set;{math;{option;user}+10000};{$LocalPushList}}
+
+{user.setXP;0}
+
