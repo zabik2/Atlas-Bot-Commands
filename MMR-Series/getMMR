@@ -1,0 +1,20 @@
+{=localarray;{store.get;{option;usernick}}}
+Игрок:                {user.nickname;{option;usernick}}
+Рейтинг:            {$localarray.0.rating}
+Победы:             {$localarray.0.victories}
+Поражения:     {$localarray.0.loses}
+{void;
+{if;{$localarray.0.rating};==;;{=localarray.0.rating;0}}
+{if;{$localarray.0.victories};==;;{=localarray.0.victories;0}}
+{if;{$localarray.0.loses};==;;{=localarray.0.loses;0}}
+{=WinRate;{math;{$localarray.0.victories} / ({$localarray.0.victories} + {$localarray.0.loses})}}
+{=ListID;{math;{option;usernick}+10000}}
+
+{=localarrayList;{store.get;{$ListID}}}
+{if;{$localarrayList};==;;{=localarrayList;{[]}}}
+}Винрейт:           {$WinRate}
+
+[#for;{=item};{$localarrayList}]
+  {$item.winner} за {$item.race} победил {$item.loser}-a за {$item.loser_race} 
+  //реплей {message.id;{$item.replay}}
+[/for]
